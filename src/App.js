@@ -1,25 +1,29 @@
-import "./App.css";
-import Home from "./components/Home";
-import Contact from "./components/Contact";
-import Faq from "./components/Faq";
-import About from "./components/About";
-import NotFound from './components/NotFound';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
+import "./assets/css/style.css";
+import Header from "./view/common/Header";
+import Footer from "./view/common/Footer";
+import Home from "./view/Home";
+import NotFound from "./view/NotFound";
+import Faq from './view/Faq';
+import Contact from './view/Contact'
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home/>}/>
-        <Route path="/contact-us" element={<Contact/>}/>        
-        <Route path="/about" element={<About/>}/>   
-        <Route path="faq" element={<Faq/>}/>
-        <Route path="*" element={<NotFound/>}/>
-      </Routes>
-    </BrowserRouter>
-    // <Home />
-    // <Contact />
-    // <Faq />
-    // <About />
+    <>
+      <div className="wrapper">
+        <div className="container bodyContainer">
+          <Header />
+          <div className="main">
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="*" element={<NotFound />} />
+                <Route path="/faq" element={<Faq/>}/>
+                <Route path="/contact" element={<Contact/>}/>
+              </Routes>
+          </div>
+          <Footer />
+        </div>
+      </div>
+    </>
   );
 }
 

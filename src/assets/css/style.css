@@ -1,0 +1,20 @@
+.bodyContainer {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1;
+}
+header {
+  flex-basis: 100%;
+}
+footer {
+  flex-basis: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.logo
+{
+    width: 150px;
+    height: auto;
+}
