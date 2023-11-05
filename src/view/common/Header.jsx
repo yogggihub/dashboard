@@ -5,7 +5,7 @@ const Header = () => {
     <header>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <Link className="navbar-brand" to="/">
-          <img src={javascript} className="logo"/>
+          <img alt="javascript" src={javascript} className="logo"/>
         </Link>
         <button
           className="navbar-toggler"
