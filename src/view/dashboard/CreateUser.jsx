@@ -1,7 +1,12 @@
 import { useState } from "react";
 import { formFields } from "../../const/formFields";
+import Button from "../../components/button-component";
+import InputField from "../../components/input-component";
+import { editableInputTypes } from "@testing-library/user-event/dist/utils";
 const CreateUser = () => {
   const [formValue, setFormValue] = useState(formFields);
+  const { userRole, name, gender, mobile, email, address, password } =
+    formValue;
   const [formError, setFormError] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
   const handleChange = (e) => {
@@ -12,17 +17,16 @@ const CreateUser = () => {
     e.preventDefault();
     setFormError(validation(formValue));
     setIsSubmit(true);
-    if(Object.keys(formError).length===0 && isSubmit)
-    {
-        console.log("form has been submit")
+    if (Object.keys(formError).length === 0 && isSubmit) {
+      console.log("form has been submit");
     }
   };
   const validation = (values) => {
     const erros = {};
     if (!values?.name) {
-        erros.name="Enter Name"
+      erros.name = "Enter Name";
     }
-    return erros
+    return erros;
   };
   return (
     <form onSubmit={handleSubmit}>
@@ -32,7 +36,7 @@ const CreateUser = () => {
           <select
             className="form-control"
             id="user_role"
-            value={formValue.userRole}
+            value={userRole}
             onChange={handleChange}
             name="userRole"
           >
@@ -41,13 +45,13 @@ const CreateUser = () => {
           </select>
         </div>
         <div className="form-group  col-6">
-          <label htmlFor="User_name">Name</label>
-          <input
+          <InputField
             type="text"
-            name="name"
             className="form-control"
+            labelName="Name"
+            name="name"
             id="User_name"
-            value={formValue.name}
+            value={name}
             placeholder="Enter Name"
             onChange={handleChange}
           />
@@ -61,7 +65,7 @@ const CreateUser = () => {
               name="gender"
               id="exampleRadios1"
               value="Male"
-              checked={formValue.gender === "Male"}
+              checked={gender === "Male"}
               onChange={handleChange}
             />
             <label className="form-check-label" htmlFor="exampleRadios1">
@@ -75,7 +79,7 @@ const CreateUser = () => {
               name="exampleRadios"
               id="exampleRadios2"
               value="Female"
-              checked={formValue.gender === "Female"}
+              checked={gender === "Female"}
               onChange={handleChange}
             />
             <label className="form-check-label" htmlFor="exampleRadios2">
@@ -84,56 +88,50 @@ const CreateUser = () => {
           </div>
         </div>
         <div className="form-group  col-6">
-          <label htmlFor="User_mobile">Mobile</label>
-          <input
+          <InputField
             type="number"
             className="form-control"
             id="User_mobile"
             placeholder="Enter Mobile No"
-            value={formValue.mobile}
+            value={mobile}
             name="mobile"
             onChange={handleChange}
           />
         </div>
         <div className="form-group  col-6">
-          <label htmlFor="User_email">Email</label>
-          <input
+          <InputField
             type="email"
             className="form-control"
             id="User_email"
             placeholder="Enter Email Id"
-            value={formValue.email}
+            value={email}
             name="email"
             onChange={handleChange}
           />
         </div>
         <div className="form-group col-6">
-          <label htmlFor="user_address">Address</label>
           <textarea
             className="form-control"
             id="user_address"
             rows="3"
-            value={formValue.address}
+            value={address}
             name="address"
             onChange={handleChange}
           ></textarea>
         </div>
         <div className="form-group col-6">
-          <label htmlFor="User_pwd">Password</label>
-          <input
+          <InputField
             type="password"
             className="form-control"
             id="User_pwd"
             placeholder="Enter Password"
-            value={formValue.password}
+            value={password}
             name="password"
             onChange={handleChange}
           />
         </div>
         <div className="form-group col-6 mt-20">
-          <button type="submit" className="btn btn-primary btn-lg">
-            Register
-          </button>
+          <Button className="btn btn-primary btn-lg">Register</Button>
         </div>
       </div>
     </form>

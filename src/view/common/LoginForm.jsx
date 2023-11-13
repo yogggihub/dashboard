@@ -1,5 +1,5 @@
 import React from "react";
-
+import Button from "../../components/button-component";
 function LoginForm() {
   return (
     <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
@@ -27,13 +27,9 @@ function LoginForm() {
           </label>
         </div>
         <div className="text-center text-lg-start mt-4 pt-2">
-          <button
-            type="button"
-            className="btn btn-primary btn-lg"
-            style={{ paddingLeft: "2.5rem", paddingRight: "2.5rem" }}
-          >
+          <Button className="btn btn-primary btn-lg" id="login_btn">
             Login
-          </button>
+          </Button>
         </div>
       </form>
     </div>
