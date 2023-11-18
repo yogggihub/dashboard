@@ -26,6 +26,15 @@ const CreateUser = () => {
     if (!values?.name) {
       erros.name = "Enter Name";
     }
+    if (!values?.email) {
+      erros.email = "Enter Email Id";
+    }
+    if (!values?.password) {
+      erros.password = "Enter Password";
+    }
+    if (!values?.mobile) {
+      erros.mobile = "Enter Mobile";
+    }
     return erros;
   };
   return (
@@ -59,8 +68,9 @@ const CreateUser = () => {
         </div>
         <div className="form-group  d-flex col-6 align-items-center">
           <div className="form-check">
-            <input
+            <InputField
               className="form-check-input"
+              labelName="Male"
               type="radio"
               name="gender"
               id="exampleRadios1"
@@ -68,13 +78,11 @@ const CreateUser = () => {
               checked={gender === "Male"}
               onChange={handleChange}
             />
-            <label className="form-check-label" htmlFor="exampleRadios1">
-              Male
-            </label>
           </div>
           <div className="form-check">
-            <input
+            <InputField
               className="form-check-input"
+              labelName="Female"
               type="radio"
               name="exampleRadios"
               id="exampleRadios2"
@@ -82,25 +90,25 @@ const CreateUser = () => {
               checked={gender === "Female"}
               onChange={handleChange}
             />
-            <label className="form-check-label" htmlFor="exampleRadios2">
-              Female
-            </label>
           </div>
         </div>
         <div className="form-group  col-6">
           <InputField
             type="number"
             className="form-control"
+            labelName="Mobile"
             id="User_mobile"
             placeholder="Enter Mobile No"
             value={mobile}
             name="mobile"
             onChange={handleChange}
           />
+           <p className="errorMsg">{formError.mobile}</p>
         </div>
         <div className="form-group  col-6">
           <InputField
             type="email"
+            labelName="Email"
             className="form-control"
             id="User_email"
             placeholder="Enter Email Id"
@@ -108,8 +116,10 @@ const CreateUser = () => {
             name="email"
             onChange={handleChange}
           />
+           <p className="errorMsg">{formError.email}</p>
         </div>
         <div className="form-group col-6">
+          <label>Address</label>
           <textarea
             className="form-control"
             id="user_address"
@@ -122,6 +132,7 @@ const CreateUser = () => {
         <div className="form-group col-6">
           <InputField
             type="password"
+            labelName="Password"
             className="form-control"
             id="User_pwd"
             placeholder="Enter Password"
@@ -129,6 +140,7 @@ const CreateUser = () => {
             name="password"
             onChange={handleChange}
           />
+          <p className="errorMsg">{formError.password}</p>
         </div>
         <div className="form-group col-6 mt-20">
           <Button className="btn btn-primary btn-lg">Register</Button>

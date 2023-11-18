@@ -7,6 +7,7 @@ import NotFound from "./view/NotFound";
 import Faq from "./view/Faq";
 import Contact from "./view/Contact";
 import CreateUser from "./view/dashboard/CreateUser";
+import UserList from './view/dashboard/UserList'
 function App() {
   return (
     <>
@@ -20,6 +21,7 @@ function App() {
               <Route path="/faq" element={<Faq />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/registration" element={<CreateUser />} />
+              <Route path="/userlist" element={<UserList />} />
               {/* Nested Menu
               <Route path="/contact" element={<Contact />}>
                 <Route path="nested" element={<nested/>}/>

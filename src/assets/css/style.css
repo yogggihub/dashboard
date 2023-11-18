@@ -13,11 +13,25 @@ footer {
   left: 0;
   right: 0;
 }
-.logo
-{
-    width: 150px;
-    height: auto;
+.logo {
+  width: 150px;
+  height: auto;
 }
-.errorMsg{
+.errorMsg {
   color: red;
+}
+table {
+  width: 100%;
+}
+td {
+  padding: 10px;
+  border-right: 1px solid;
+}
+tr,
+th {
+  padding: 10px;
+  border: 1px solid;
+}
+th, .actionTitle{
+  text-align: center;
 }
