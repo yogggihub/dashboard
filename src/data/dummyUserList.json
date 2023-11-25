@@ -1,5 +1,5 @@
 {
-  "users": [
+  "userList": [
     {
       "id": 1,
       "name": "Kruti",
@@ -16,22 +16,5 @@
       "mobile": 7777777777,
       "email": "sachi@gmail.com"
     }
-  ],
-  "posts": [
-    {
-      "id": 1,
-      "title": "javascript",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }

@@ -1,23 +1,15 @@
-import React, { useState } from "react";
-const tempArry = [
-  {
-    id: 1,
-    name: "Kruti",
-    role: "User",
-    gender: "Female",
-    mobile: 8888888888,
-    email: "kruti@gmail.com",
-  },
-  {
-    id: 2,
-    name: "Sachi",
-    role: "User",
-    gender: "Female",
-    mobile: 7777777777,
-    email: "sachi@gmail.com",
-  },
-];
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 const UserList = () => {
+  const [userData, SetUserData] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:3001/users")
+      .then((data) => data.json())
+      .then((rawData) => {
+        SetUserData(rawData);
+        localStorage.setItem("userData", JSON.stringify(rawData));
+      });
+  }, []);
   return (
     <table>
       <tbody>
@@ -33,7 +25,7 @@ const UserList = () => {
           </th>
         </tr>
 
-        {tempArry.map((user) => (
+        {userData.map((user) => (
           <tr>
             <td>{user.id}</td>
             <td>{user.role}</td>
@@ -41,7 +33,9 @@ const UserList = () => {
             <td>{user.gender}</td>
             <td>{user.mobile}</td>
             <td>{user.email}</td>
-            <td>View</td>
+            <td>
+              <Link to={`/userview/${user.id}`}>View</Link>
+            </td>
             <td>Edit</td>
             <td>Delete</td>
           </tr>
