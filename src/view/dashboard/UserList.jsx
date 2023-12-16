@@ -1,15 +1,28 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getUsers, deleteUsers } from "../../store/userDetailsSlice";
 const UserList = () => {
-  const [userData, SetUserData] = useState([]);
+  const { data: userData, status } = useSelector((state) => state.users);
+  const dispatch = useDispatch();
   useEffect(() => {
-    fetch("http://localhost:3001/users")
-      .then((data) => data.json())
-      .then((rawData) => {
-        SetUserData(rawData);
-        localStorage.setItem("userData", JSON.stringify(rawData));
-      });
+    dispatch(getUsers());
   }, []);
+  if (status === "loading") {
+    return <div>Loading</div>;
+  }
+  if (status === "Rejected") {
+    return <div>Network Issue</div>;
+  }
+  const deleteUser = (userId) => {
+    let confirm = window.confirm("Are you want to delete the user?");
+    if (confirm) {
+      dispatch(deleteUsers(userId));
+      alert("User has been deleted");
+    } else {
+      alert("User not been deleted");
+    }
+  };
   return (
     <table>
       <tbody>
@@ -25,8 +38,8 @@ const UserList = () => {
           </th>
         </tr>
 
-        {userData.map((user) => (
-          <tr>
+        {userData?.map((user) => (
+          <tr key={user.id}>
             <td>{user.id}</td>
             <td>{user.role}</td>
             <td>{user.name}</td>
@@ -37,7 +50,11 @@ const UserList = () => {
               <Link to={`/userview/${user.id}`}>View</Link>
             </td>
             <td>Edit</td>
-            <td>Delete</td>
+            <td>
+              <a href="#" onClick={() => deleteUser(`${user.id}`)}>
+                Delete
+              </a>
+            </td>
           </tr>
         ))}
       </tbody>

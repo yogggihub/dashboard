@@ -35,3 +35,9 @@ th {
 th, .actionTitle{
   text-align: center;
 }
+.profile-container  div *{
+  padding: 10px 12px;
+}
+.profile-container label{
+  font-weight: 600   ;
+}
