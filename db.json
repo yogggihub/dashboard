@@ -7,7 +7,7 @@
       "gender": "Female",
       "mobile": 8888888888,
       "email": "kruti@gmail.com",
-      "password": "12345"
+      "password": 12345
     },
     {
       "id": 2,
@@ -15,7 +15,8 @@
       "role": "User",
       "gender": "Female",
       "mobile": 7777777777,
-      "email": "sachi@gmail.com"
+      "email": "sachi@gmail.com",
+      "password": 123456
     }
   ],
   "posts": [

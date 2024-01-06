@@ -10,6 +10,9 @@ import CreateUser from "./view/dashboard/CreateUser";
 import UserList from "./view/dashboard/UserList";
 import View from "./view/dashboard/View";
 import EditUser from "./view/dashboard/EditUser";
+import PrivateRoute from "./routes/PrivateRoute";
+import ProtectedRoute from "./routes/ProtectRoute";
+import AccessDenied from "./view/dashboard/AccessDenied";
 function App() {
   return (
     <>
@@ -23,9 +26,31 @@ function App() {
               <Route path="/faq" element={<Faq />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/registration" element={<CreateUser />} />
-              <Route path="/userlist" element={<UserList />} />
-              <Route path="/userview/:userid" element={<View />} />
-              <Route path="/EditUser/:userid" element={<EditUser />} />
+              <Route
+                path="/userlist"
+                element={
+                  <ProtectedRoute>
+                    <UserList />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/userview/:userid"
+                element={
+                  <ProtectedRoute>
+                    <View />
+                  </ProtectedRoute>
+                }
+              />
+              <Route path="/accessdenied" element={<AccessDenied />} />
+              <Route
+                path="/EditUser/:userid"
+                element={
+                  <PrivateRoute>
+                    <EditUser />
+                  </PrivateRoute>
+                }
+              />
               {/* Nested Menu
               <Route path="/contact" element={<Contact />}>
                 <Route path="nested" element={<nested/>}/>

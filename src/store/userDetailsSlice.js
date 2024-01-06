@@ -69,3 +69,12 @@ export const updateUser = createAsyncThunk(
     return response.data;
   }
 );
+export const loginUser = createAsyncThunk(
+  "users/loginUser",
+  async (loginDetails) => {
+    const response = await axios.get(
+      `http://localhost:3001/users?email=${loginDetails.email}&password=${loginDetails.password}`
+    );
+    console.log(response.data);
+  }
+);

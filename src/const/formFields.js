@@ -7,3 +7,7 @@ export const formFields = {
   address: "",
   password: "",
 };
+export const loginFields = {
+  email: "",
+  password: "",
+};
