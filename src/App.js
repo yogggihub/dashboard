@@ -9,6 +9,7 @@ import Contact from "./view/Contact";
 import CreateUser from "./view/dashboard/CreateUser";
 import UserList from "./view/dashboard/UserList";
 import View from "./view/dashboard/View";
+import EditUser from "./view/dashboard/EditUser";
 function App() {
   return (
     <>
@@ -24,6 +25,7 @@ function App() {
               <Route path="/registration" element={<CreateUser />} />
               <Route path="/userlist" element={<UserList />} />
               <Route path="/userview/:userid" element={<View />} />
+              <Route path="/EditUser/:userid" element={<EditUser />} />
               {/* Nested Menu
               <Route path="/contact" element={<Contact />}>
                 <Route path="nested" element={<nested/>}/>

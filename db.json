@@ -2,11 +2,12 @@
   "users": [
     {
       "id": 1,
-      "name": "Kruti",
+      "name": "Krutii",
       "role": "User",
       "gender": "Female",
       "mobile": 8888888888,
-      "email": "kruti@gmail.com"
+      "email": "kruti@gmail.com",
+      "password": "12345"
     },
     {
       "id": 2,

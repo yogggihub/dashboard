@@ -22,9 +22,20 @@ const userDetailsSlice = createSlice({
         state.status = "Rejected";
       })
       .addCase(deleteUsers.fulfilled, (state, { payload }) => {
-        //state.data = payload.filter((ele)=>ele.id !==  )
-        console.log("payload", payload);
         state.status = "idle";
+      })
+      .addCase(updateUser.fulfilled, (state, { payload }) => {
+        debugger;
+        const index = state.data?.findIndex(
+          (user) => user?.id === +payload?.id
+        );
+
+        console.log([index]);
+        console.log(state.data[index]);
+        state.data[index] = {
+          ...state.data[index],
+          ...payload,
+        };
       })
       .addDefaultCase((state, action) => {
         state.status = "something went wrong";
@@ -37,7 +48,6 @@ export const {} = userDetailsSlice.actions;
 export default userDetailsSlice.reducer;
 export const getUsers = createAsyncThunk("users/getUsers", async () => {
   const response = await axios.get("http://localhost:3001/users");
-  console.log("API working", response.data);
   return response.data;
 });
 export const deleteUsers = createAsyncThunk(
@@ -46,7 +56,16 @@ export const deleteUsers = createAsyncThunk(
     const response = await axios.delete(
       `http://localhost:3001/users/${userid}`
     );
-    console.log("response", response);
+    return response.data;
+  }
+);
+export const updateUser = createAsyncThunk(
+  "users/updateUser",
+  async (userData) => {
+    const response = await axios.put(
+      `http://localhost:3001/users/${userData.id}`,
+      userData
+    );
     return response.data;
   }
 );

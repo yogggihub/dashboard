@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 const View = () => {
   const { userid } = useParams();
-  const { data, status } = useSelector((state) => state.users);;
+  const navigate = useNavigate();
+  const { data, status } = useSelector((state) => state.users);
   console.log("first", `${userid}`);
   const [userData, SetUserData] = useState([]);
   const [filterData, setFilterData] = useState([]);
   useEffect(() => {
-    // SetUserData(JSON.parse(localStorage.getItem("userData")));
     SetUserData(data);
   }, []);
   useEffect(() => {
@@ -41,6 +41,9 @@ const View = () => {
           <div>
             <label>Email</label>: {user.email}
           </div>
+          <button className="btn-primary" onClick={() => navigate(-1)}>
+            Back
+          </button>
         </div>
       ))}
     </>

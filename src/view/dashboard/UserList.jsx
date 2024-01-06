@@ -49,7 +49,9 @@ const UserList = () => {
             <td>
               <Link to={`/userview/${user.id}`}>View</Link>
             </td>
-            <td>Edit</td>
+            <td>
+              <Link to={`/EditUser/${user.id}`}>Edit</Link>
+            </td>
             <td>
               <a href="#" onClick={() => deleteUser(`${user.id}`)}>
                 Delete
