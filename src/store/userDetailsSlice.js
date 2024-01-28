@@ -75,6 +75,9 @@ export const loginUser = createAsyncThunk(
     const response = await axios.get(
       `http://localhost:3001/users?email=${loginDetails.email}&password=${loginDetails.password}`
     );
-    console.log(response.data);
+    if(response.data[0]) 
+    {
+      sessionStorage.setItem("auth",JSON.stringify({id:response.data[0].id,role:response.data[0].role}));
+    }
   }
 );

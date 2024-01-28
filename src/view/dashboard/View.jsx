@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import {getUsers} from '../../store/userDetailsSlice';
 const View = () => {
   const { userid } = useParams();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { data, status } = useSelector((state) => state.users);
-  console.log("first", `${userid}`);
   const [userData, SetUserData] = useState([]);
   const [filterData, setFilterData] = useState([]);
   useEffect(() => {
+    dispatch(getUsers());
     SetUserData(data);
   }, []);
   useEffect(() => {

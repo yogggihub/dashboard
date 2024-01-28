@@ -29,9 +29,9 @@ function App() {
               <Route
                 path="/userlist"
                 element={
-                  <ProtectedRoute>
+                  <PrivateRoute>
                     <UserList />
-                  </ProtectedRoute>
+                  </PrivateRoute>
                 }
               />
               <Route

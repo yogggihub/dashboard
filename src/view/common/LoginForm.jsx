@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import Button from "../../components/button-component";
 import { loginUser } from "../../store/userDetailsSlice";
-
 import { loginFields } from "../../const/formFields";
+import {login} from "../../utils/login";
 function LoginForm() {
+  const redirect =  useNavigate();
   const dispatch = useDispatch();
   const [formValue, setFormValue] = useState(loginFields);
   const handleChange = (e) => {
@@ -14,6 +16,8 @@ function LoginForm() {
   const handleOnSubmit = (e) => {
     e.preventDefault();
     dispatch(loginUser(formValue));
+    const {id, role} = login();
+    if(id) redirect(`/userview/${id}`) ;
   };
 
   return (

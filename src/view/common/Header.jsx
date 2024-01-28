@@ -1,11 +1,16 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import javascript from "../../assets/imgs/logo.png";
 const Header = () => {
+  const redirect = useNavigate();
+  const logout = () => {
+    sessionStorage.clear();
+    redirect("/");
+  };
   return (
     <header>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <Link className="navbar-brand" to="/">
-          <img alt="javascript" src={javascript} className="logo"/>
+          <img alt="javascript" src={javascript} className="logo" />
         </Link>
         <button
           className="navbar-toggler"
@@ -39,6 +44,7 @@ const Header = () => {
           </ul>
         </div>
       </nav>
+      <button onClick={logout}>Logout</button>
     </header>
   );
 };
